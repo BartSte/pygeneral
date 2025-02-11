@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pytools"
+name = "pygeneral"
 authors = [ {name = "BartSte"} ]
 description = "Tools for Python"
 readme = "README.md"
@@ -20,14 +20,14 @@ version = "0.0.0"
 dev = ["ipdb", "ipython", "pytest", "build", "twine", "pre-commit"]
 
 [project.scripts]
-lensort = "pytools._cli.lensort:main"
+lensort = "pygeneral._cli.lensort:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["pytools"]
+include = ["pygeneral"]
 
 [tool.pyright]
-include = ["src/pytools", "tests"]
+include = ["src/pygeneral", "tests"]
 exclude = [
     "**/__pycache__",
     ".git",

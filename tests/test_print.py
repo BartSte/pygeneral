@@ -3,7 +3,7 @@ from typing import override
 from unittest import TestCase
 from unittest.mock import patch
 
-from pytools.print import StdoutCounter
+from pygeneral.print import StdoutCounter
 
 
 class TestStdoutCounter(TestCase):

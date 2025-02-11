@@ -3,7 +3,7 @@ import sys
 from argparse import ArgumentParser, Namespace, RawDescriptionHelpFormatter
 from sys import stdin
 
-from pytools.sort import lensort
+from pygeneral.sort import lensort
 
 _DESCRIPTION = """
 Sort lines of text based on the number of characters before a regular
