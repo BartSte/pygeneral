@@ -1,12 +1,12 @@
 from os.path import join
 from subprocess import check_output
-from  import paths
 from unittest import TestCase
+
+from tests import paths
 
 
 class TestLenSort(TestCase):
-
-    EXPECTED = b'\n=;\nx = 1;\nxx = 2;\nxxx = 3;\nxxxx = 4;\nxxxxx === 5;\n'
+    EXPECTED = b"\n=;\nx = 1;\nxx = 2;\nxxx = 3;\nxxxx = 4;\nxxxxx === 5;\n"
 
     def test(self) -> None:
         """"""
