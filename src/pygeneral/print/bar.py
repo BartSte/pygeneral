@@ -40,7 +40,7 @@ class ProgressBar:
             prefix: A string to display before the progress bar.
                 Defaults to an empty string.
             suffix: A string to display after the progress bar.
-                Defaults to an empty string.
+z               Defaults to an empty string.
             length: The character length of the progress bar itself.
                 Defaults to 50.
             decimals: Number of decimals to show in the percentage.
@@ -161,3 +161,4 @@ class ProgressBar:
         filled: int = int(self._length * percent // 100)
         unfilled: int = self._length - filled
         return self.fill * filled + self.unfilled * unfilled
+

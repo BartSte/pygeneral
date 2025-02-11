@@ -1,10 +1,6 @@
 # README - pygeneral
 
-A collection of general-purpose Python utilities, including:
-
-- **`lensort`**: Sort lines of text based on the number of characters before a regular expression match.
-- **`StdoutCounter`**: A simple progress counter that writes progress to `stdout`.
-- **`is_root`**: Check if the script is run with root (administrator) privileges.
+A collection of general-purpose Python utilities.
 
 ---
 
@@ -26,10 +22,10 @@ A collection of general-purpose Python utilities, including:
 
 `pygeneral` is a set of small Python utilities that can simplify common tasks.
 
-- **`lensort`** sorts lines based on their distance to a match of a specified regular expression.
-  - Lines are first sorted by length, then by the position of the regex match (lines with no match come first).
+- **`ProgressBar`** is a simple progress bar that can be used in the console.
 - **`StdoutCounter`** provides a straightforward way to show progress in the console, incrementally updating a single line.
 - **`is_root`** helps you check if the current user has root (on Linux/Unix) or administrator (on Windows) privileges.
+- **`lensort`** sorts lines based on their distance to a match of a specified regular expression.
 
 ---
 
@@ -50,7 +46,13 @@ pip install -e ".[dev]"
 
 ---
 
-## Command-Line Usage
+## Usage
+
+You can import the classes and functions from `pygeneral` as you normally would
+with in a Python script. Additionally, some of the utilities are also available
+as command-line tools. As is explained below.
+
+### Lensort
 
 After installation, you will have the `lensort` command available:
 
@@ -58,7 +60,7 @@ After installation, you will have the `lensort` command available:
 lensort [OPTIONS] <REGEX>
 ```
 
-### Example
+#### Example
 
 Suppose you have a file named `input.txt`:
 
@@ -93,48 +95,6 @@ You can also pipe content directly to `lensort`, for example:
 
 ```bash
 cat input.txt | lensort '='
-```
-
-**Options:**
-
-- `-l, --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL}`: Set the logging level (default: `INFO`).
-- `-f, --file <FILE>`: Read text from a file instead of `stdin`.
-
----
-
-## Python Usage
-
-### Using `StdoutCounter`
-
-To display incremental progress on the console:
-
-```python
-import time
-from pygeneral.print import StdoutCounter
-
-counter = StdoutCounter(
-    index=0,
-    goal=5,
-    prefix="Processing: ",
-    suffix=" items complete"
-)
-
-for _ in range(5):
-    time.sleep(1)  # Simulating some work
-    counter.increment()
-```
-
-This will produce a line on the console that updates from `0/5` to `5/5`.
-
-### Checking Root Privileges with `is_root`
-
-```python
-from pygeneral.permission import is_root
-
-if is_root():
-    print("Running as root!")
-else:
-    print("Not running as root.")
 ```
 
 ---
