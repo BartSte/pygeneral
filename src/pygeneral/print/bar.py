@@ -40,7 +40,7 @@ class ProgressBar:
             prefix: A string to display before the progress bar.
                 Defaults to an empty string.
             suffix: A string to display after the progress bar.
-z               Defaults to an empty string.
+                Defaults to an empty string.
             length: The character length of the progress bar itself.
                 Defaults to 50.
             decimals: Number of decimals to show in the percentage.
@@ -146,7 +146,9 @@ z               Defaults to an empty string.
             float: The current percentage of completion.
         """
         clamp: float = max(self._min_value, min(self._value, self._max_value))
-        return 100 * (clamp / (self._max_value - self._min_value))
+        num: float = clamp - self._min_value
+        den: float = self._max_value - self._min_value
+        return (num / den) * 100
 
     def _make_bar(self, percent: float) -> str:
         """Constructs the visual progress bar based on the percentage.
@@ -161,4 +163,3 @@ z               Defaults to an empty string.
         filled: int = int(self._length * percent // 100)
         unfilled: int = self._length - filled
         return self.fill * filled + self.unfilled * unfilled
-
