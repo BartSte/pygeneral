@@ -11,6 +11,12 @@ user. A change is always categorized based on the following types:
   code.
 - Breaking: a change is made that is not backwards compatible.
 
+## 0.2
+
+### Features
+
+- Added path.py
+
 ## 0.1
 
 ### Features
