@@ -1,7 +1,7 @@
 import sys
 
 
-class StdoutCounter:
+class Counter:
     """
     A simple counter that writes progress to standard output on a single line.
 

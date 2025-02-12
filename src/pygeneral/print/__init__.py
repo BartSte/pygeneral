@@ -1,3 +1,3 @@
-from pygeneral.print.counter import StdoutCounter
+from pygeneral.print.counter import Counter
 
-__all__ = ['StdoutCounter']
+__all__ = ['Counter']
