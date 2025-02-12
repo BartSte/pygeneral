@@ -120,8 +120,8 @@ z               Defaults to an empty string.
         message: str = self._template.format(
             prefix=self.prefix, bar=bar, percent=percent, suffix=self.suffix
         )
-        sys.stdout.write(f"\r{message}")
-        sys.stdout.flush()
+        sys.stderr.write(f"\r{message}")
+        sys.stderr.flush()
 
     def _make_message(self) -> str:
         """Constructs the current progress bar message.

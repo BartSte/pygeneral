@@ -48,8 +48,8 @@ class StdoutCounter:
         """
         self.index += value
         message = self.make_message()
-        sys.stdout.write(message)
-        sys.stdout.flush()
+        sys.stderr.write(message)
+        sys.stderr.flush()
 
     def make_message(self) -> str:
         """

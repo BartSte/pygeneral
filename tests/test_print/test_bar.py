@@ -64,7 +64,7 @@ class TestProgressBar(unittest.TestCase):
         pb = ProgressBar()
 
         # Capture output
-        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+        with patch("sys.stderr", new=io.StringIO()) as fake_out:
             pb.value = 50
             output = fake_out.getvalue()
             self.assertIn("50%", output, "Progress bar should show 50%.")
@@ -80,7 +80,7 @@ class TestProgressBar(unittest.TestCase):
         pb.value = 50  # draw once
 
         # Capture output again and reassign to the same value
-        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+        with patch("sys.stderr", new=io.StringIO()) as fake_out:
             pb.value = 50
             output = fake_out.getvalue()
             self.assertEqual(
@@ -90,7 +90,7 @@ class TestProgressBar(unittest.TestCase):
     def test_set_value_quiet(self):
         """Test that set_value_quiet does not call draw."""
         pb = ProgressBar()
-        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+        with patch("sys.stderr", new=io.StringIO()) as fake_out:
             pb.set_value_quiet(75)
             output = fake_out.getvalue()
             self.assertEqual(
@@ -105,7 +105,7 @@ class TestProgressBar(unittest.TestCase):
         pb = ProgressBar(min_value=0, max_value=100, length=10)
         pb.set_value_quiet(50)
 
-        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+        with patch("sys.stderr", new=io.StringIO()) as fake_out:
             pb.draw()
             output = fake_out.getvalue()
             # For 50%, the bar should be half-filled
@@ -131,7 +131,7 @@ class TestProgressBar(unittest.TestCase):
         pb = ProgressBar()
         pb.set_value_quiet(100)  # set to the max_value
 
-        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+        with patch("sys.stderr", new=io.StringIO()) as fake_out:
             pb.draw()
             output = fake_out.getvalue()
             self.assertIn("100%", output, "Output should contain 100%.")

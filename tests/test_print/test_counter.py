@@ -19,7 +19,7 @@ class TestStdoutCounter(TestCase):
     def setUp(self):
         self.cnt = 0
 
-    @patch("sys.stdout.write")
+    @patch("sys.stderr.write")
     def test_counter(self, patched_write):
         def assert_write(actual: str):
             assert actual == f"\r{self.cnt}/10"
