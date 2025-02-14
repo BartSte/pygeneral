@@ -1,7 +1,9 @@
-import sys
+from typing import override
+
+from pygeneral.print.abstract import AbstractAnimation
 
 
-class Counter:
+class Counter(AbstractAnimation):
     """
     A simple counter that writes progress to standard output on a single line.
 
@@ -12,7 +14,7 @@ class Counter:
         suffix: An optional suffix string to display after the counter.
     """
 
-    index: int
+    _value: int | float
     goal: int | None
     prefix: str
     suffix: str
@@ -20,7 +22,7 @@ class Counter:
     def __init__(
         self,
         *,
-        index: int = 0,
+        value: int = 0,
         goal: int | None = None,
         prefix: str = "",
         suffix: str = "",
@@ -29,28 +31,17 @@ class Counter:
         Initialize the StdoutCounter.
 
         Args:
-            index: The starting count (default 0).
+            value: The starting count (default 0).
             goal: The optional end goal for the counter.
             prefix: Text to display before the count.
             suffix: Text to display after the count.
         """
-        self.index = index
+        super().__init__(value=value)
         self.goal = goal
         self.prefix = prefix
         self.suffix = suffix
 
-    def increment(self, value: int = 1) -> None:
-        """
-        Increase the counter by a given value and print the updated progress.
-
-        Args:
-            value: The amount by which to increment the counter (default 1).
-        """
-        self.index += value
-        message = self.make_message()
-        sys.stderr.write(message)
-        sys.stderr.flush()
-
+    @override
     def make_message(self) -> str:
         """
         Build the progress message for display on stdout.
@@ -71,5 +62,5 @@ class Counter:
             A string with either just the current count, or `current/goal`.
         """
         if self.goal is None:
-            return str(self.index)
-        return f"{self.index}/{self.goal}"
+            return str(self._value)
+        return f"{self._value}/{self.goal}"

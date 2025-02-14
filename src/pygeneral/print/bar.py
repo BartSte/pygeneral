@@ -1,7 +1,7 @@
-import sys
+from pygeneral.print.abstract import AbstractAnimation
 
 
-class ProgressBar:
+class ProgressBar(AbstractAnimation):
     """A progress bar for the command line.
 
     This class represents a progress bar that can be drawn on the command line
@@ -51,6 +51,7 @@ class ProgressBar:
             ValueError: If `length` is less than or equal to 0.
             ValueError: If `fill` is not a single character.
         """
+        super().__init__()
         self._min_value = min_value
         self._max_value = max_value
         self._length = length
@@ -79,51 +80,7 @@ class ProgressBar:
         elif len(self.fill) != 1:
             raise ValueError("fill must be a single character.")
 
-    @property
-    def value(self) -> int | float:
-        """Gets the current value of the progress bar.
-
-        Returns:
-            int | float: The current progress value.
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value: int | float):
-        """Sets the current value and redraws the progress bar.
-
-        Args:
-            value: The new current value. If it differs from the
-                existing value, the progress bar is redrawn.
-        """
-        if value != self._value:
-            self._value = value
-            self.draw()
-
-    def set_value_quiet(self, value: int | float):
-        """Sets the current value without drawing the progress bar.
-
-        Args:
-            value: The new current value.
-        """
-        self._value = value
-
-    def draw(self):
-        """Draws the progress bar to stdout.
-
-        This method calculates the percentage of completion, constructs the
-        bar string, and writes it to stdout in place (overwriting the previous
-        line). It also flushes stdout immediately.
-        """
-        percent: float = self._calc_percent()
-        bar: str = self._make_bar(percent)
-        message: str = self._template.format(
-            prefix=self.prefix, bar=bar, percent=percent, suffix=self.suffix
-        )
-        sys.stderr.write(f"\r{message}")
-        sys.stderr.flush()
-
-    def _make_message(self) -> str:
+    def make_message(self) -> str:
         """Constructs the current progress bar message.
 
         Returns:

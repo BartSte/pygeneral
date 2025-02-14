@@ -6,7 +6,7 @@ from unittest.mock import patch
 from pygeneral.print import Counter
 
 
-class TestStdoutCounter(TestCase):
+class TestCounter(TestCase):
     """Test case for StdoutCounter.
 
     Attributes:
@@ -29,11 +29,11 @@ class TestStdoutCounter(TestCase):
         counter = Counter(goal=10)
         for i in range(10):
             self.cnt += 1
-            counter.increment()
+            counter.value += 1
 
 
 if __name__ == "__main__":
     counter = Counter(goal=10, prefix="Counting: ", suffix=" seconds")
     for i in range(10):
-        counter.increment()
+        counter.value += 1
         sleep(1)
