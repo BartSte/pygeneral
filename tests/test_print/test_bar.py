@@ -91,7 +91,7 @@ class TestProgressBar(unittest.TestCase):
         """Test that set_value_quiet does not call draw."""
         pb = ProgressBar()
         with patch("sys.stderr", new=io.StringIO()) as fake_out:
-            pb.set_value_quiet(75)
+            pb.set_value_no_draw(75)
             output = fake_out.getvalue()
             self.assertEqual(
                 pb.value, 75, "Value should be updated internally."
@@ -103,7 +103,7 @@ class TestProgressBar(unittest.TestCase):
     def test_draw_manual_call(self):
         """Test drawing manually and check the output format."""
         pb = ProgressBar(min_value=0, max_value=100, length=10)
-        pb.set_value_quiet(50)
+        pb.set_value_no_draw(50)
 
         with patch("sys.stderr", new=io.StringIO()) as fake_out:
             pb.draw()
@@ -117,11 +117,11 @@ class TestProgressBar(unittest.TestCase):
     def test_calc_percent_clamping(self):
         """Test that percent is clamped between min_value and max_value."""
         pb = ProgressBar(min_value=10, max_value=20)
-        pb.set_value_quiet(0)  # below min_value
+        pb.set_value_no_draw(0)  # below min_value
         self.assertAlmostEqual(
             pb._calc_percent(), 0.0, msg="Should be clamped to 0%."
         )
-        pb.set_value_quiet(25)  # above max_value
+        pb.set_value_no_draw(25)  # above max_value
         self.assertAlmostEqual(
             pb._calc_percent(), 100.0, msg="Should be clamped to 100%."
         )
@@ -129,7 +129,7 @@ class TestProgressBar(unittest.TestCase):
     def test_complete_bar_output(self):
         """Test the output at 100%."""
         pb = ProgressBar()
-        pb.set_value_quiet(100)  # set to the max_value
+        pb.set_value_no_draw(100)  # set to the max_value
 
         with patch("sys.stderr", new=io.StringIO()) as fake_out:
             pb.draw()

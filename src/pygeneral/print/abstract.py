@@ -37,8 +37,8 @@ class AbstractAnimation(ABC):
     def draw(self):
         """Draw the animation."""
         message = self.make_message()
-        sys.stderr.write(message)
-        sys.stderr.flush()
+        print(message, end="", file=sys.stderr, flush=True)
+        self.hide_cursor()
 
     @abstractmethod
     def make_message(self) -> str:
@@ -55,3 +55,13 @@ class AbstractAnimation(ABC):
             value: The new current value of the animation.
         """
         self._value = value
+
+    @staticmethod
+    def hide_cursor():
+        """Hide the cursor"""
+        print("\033[?25l", end="", file=sys.stderr, flush=True)
+
+    @staticmethod
+    def show_cursor():
+        """Show the cursor"""
+        print("\033[?25h", end="", file=sys.stderr, flush=True)
