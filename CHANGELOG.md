@@ -18,6 +18,10 @@ user. A change is always categorized based on the following types:
 - Added rotator.py
 - Added path.py
 
+### Bug
+
+- Show an hide the cursor during animations
+
 ## 0.1
 
 ### Features
