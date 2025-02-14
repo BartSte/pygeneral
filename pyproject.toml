@@ -14,7 +14,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = []
-version = "0.2.0"
+version = "0.2.1"
 
 [project.optional-dependencies]
 dev = ["ipdb", "ipython", "pytest", "build", "twine", "pre-commit"]
