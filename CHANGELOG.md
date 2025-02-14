@@ -15,6 +15,7 @@ user. A change is always categorized based on the following types:
 
 ### Features
 
+- Added rotator.py
 - Added path.py
 
 ## 0.1
