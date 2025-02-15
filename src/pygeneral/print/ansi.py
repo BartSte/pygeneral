@@ -1,0 +1,3 @@
+HIDE_CURSOR = "\033[?25l"
+SHOW_CURSOR = "\033[?25h"
+MOVE_UP = "\033[F"

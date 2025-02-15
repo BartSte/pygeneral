@@ -1,6 +1,8 @@
 import sys
 from abc import ABC, abstractmethod
 
+from pygeneral.print import ansi
+
 
 class AbstractAnimation(ABC):
     """Abstract class for animations.
@@ -48,19 +50,19 @@ class AbstractAnimation(ABC):
             str: The message to display.
         """
 
-    @staticmethod
-    def hide_cursor():
-        """Hide the cursor"""
-        print("\033[?25l", end="", file=sys.stderr, flush=True)
-
     def __del__(self):
         """Destructor to show the cursor when the object is deleted."""
         self.show_cursor()
 
     @staticmethod
+    def hide_cursor():
+        """Hide the cursor"""
+        print(ansi.HIDE_CURSOR, end="", file=sys.stderr, flush=True)
+
+    @staticmethod
     def show_cursor():
         """Show the cursor"""
-        print("\033[?25h", end="", file=sys.stderr, flush=True)
+        print(ansi.SHOW_CURSOR, end="", file=sys.stderr, flush=True)
 
     def set_value_no_draw(self, value: int | float):
         """Set the current value of the animation without drawing it.
