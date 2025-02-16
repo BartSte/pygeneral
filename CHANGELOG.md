@@ -11,6 +11,12 @@ user. A change is always categorized based on the following types:
   code.
 - Breaking: a change is made that is not backwards compatible.
 
+## 1.0
+
+### Breaking
+
+- The animations require `show` to be called to draw upon value change.
+
 ## 0.2
 
 ### Features
