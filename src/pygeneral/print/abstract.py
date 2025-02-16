@@ -74,4 +74,3 @@ class AbstractAnimation(ABC):
         """Hide the animation."""
         self._visible = False
         ansi.show_cursor()
-
