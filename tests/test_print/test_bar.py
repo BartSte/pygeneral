@@ -62,7 +62,7 @@ class TestProgressBar(unittest.TestCase):
     def test_value_setter_draw_call(self):
         """Test that setting `value` writes the progress bar to stdout."""
         pb = ProgressBar()
-
+        pb.show()
         # Capture output
         with patch("sys.stderr", new=io.StringIO()) as fake_out:
             pb.value = 50

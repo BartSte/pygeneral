@@ -31,4 +31,3 @@ if __name__ == "__main__":
     for i in range(10):
         counter.value += 1
         sleep(.1)
-    counter.show_cursor()

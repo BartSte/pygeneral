@@ -1,10 +1,8 @@
 from time import sleep
 from unittest import TestCase
 
-from pygeneral.print.bar import ProgressBar
-from pygeneral.print.counter import Counter
+from pygeneral.print import Rotator
 from pygeneral.print.multiple import Multiple
-from pygeneral.print.rotator import Rotator
 
 
 class TestMultiple(TestCase):
@@ -12,14 +10,130 @@ class TestMultiple(TestCase):
 
 
 if __name__ == "__main__":
-    counter = Counter(prefix="Counter: ", suffix=" of 100")
-    bar = ProgressBar(prefix="Progress: ", suffix=" %", length=20)
-    rotator = Rotator(prefix="Rotator: ", suffix="")
-    multiple = Multiple([counter, bar, rotator])
-
-    for i in range(101):
-        counter.set_value_no_draw(i)
-        bar.set_value_no_draw(i)
-        rotator.set_value_no_draw(i)
-        multiple.draw()
-        sleep(0.1)
+    # Draw a snake that zigzags across 4 lines.
+    line1 = [
+        "---->               ",
+        " ----               ",
+        "  ---               ",
+        "   --               ",
+        "    -               ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                   ^",
+        "                   |",
+        "                   |",
+        "                   |",
+        "                   |",
+        "                    ",
+        "                    ",
+    ]
+    line2 = [
+        "                    ",
+        "    v               ",
+        "    |               ",
+        "    |               ",
+        "    |               ",
+        "    |               ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                   ^",
+        "                   |",
+        "                   |",
+        "                   |",
+        "                   |",
+        "                    ",
+        "                    ",
+        "                    ",
+    ]
+    line3 = [
+        "                    ",
+        "                    ",
+        "    v               ",
+        "    |               ",
+        "    |               ",
+        "    |               ",
+        "    |               ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                   ^",
+        "                   |",
+        "                   |",
+        "                   |",
+        "                   |",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+    ]
+    line4 = [
+        "                    ",
+        "                    ",
+        "                    ",
+        "    >               ",
+        "    ->              ",
+        "    -->             ",
+        "    --->            ",
+        "    ---->           ",
+        "     ---->          ",
+        "      ---->         ",
+        "       ---->        ",
+        "        ---->       ",
+        "         ---->      ",
+        "          ---->     ",
+        "           ---->    ",
+        "            ---->   ",
+        "             ---->  ",
+        "              ----> ",
+        "               ---->",
+        "                ----",
+        "                 ---",
+        "                  --",
+        "                   -",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+        "                    ",
+    ]
+    animations = [Rotator(chars=line) for line in (line1, line2, line3, line4)]
+    multiple = Multiple(animations)
+    multiple.show()
+    for i in range(100):
+        multiple.value += 1
+        sleep(0.2)

@@ -1,3 +1,5 @@
+from typing import override
+
 from pygeneral.print.abstract import AbstractAnimation
 
 
@@ -80,6 +82,7 @@ class ProgressBar(AbstractAnimation):
         elif len(self.fill) != 1:
             raise ValueError("fill must be a single character.")
 
+    @override
     def make_message(self) -> str:
         """Constructs the current progress bar message.
 

@@ -11,10 +11,12 @@ class AbstractAnimation(ABC):
     """
 
     _value: int | float
+    _visible: bool
 
     def __init__(self, value: int | float = 0):
         """Initialize the animation."""
         self._value = 0
+        self._visible = False
 
     @property
     def value(self) -> int | float:
@@ -25,6 +27,14 @@ class AbstractAnimation(ABC):
         """
         return self._value
 
+    def set_value_no_draw(self, value: int | float):
+        """Set the current value of the animation without drawing it.
+
+        Args:
+            value: The new current value of the animation.
+        """
+        self._value = value
+
     @value.setter
     def value(self, value: int | float):
         """Set the current value of the animation.
@@ -34,13 +44,14 @@ class AbstractAnimation(ABC):
         """
         if value != self._value:
             self._value = value
-            self.draw()
+            if self._visible:
+                self.draw()
 
     def draw(self):
         """Draw the animation."""
         message = self.make_message()
         print(message, end="", file=sys.stderr, flush=True)
-        self.hide_cursor()
+        ansi.hide_cursor()
 
     @abstractmethod
     def make_message(self) -> str:
@@ -52,22 +63,15 @@ class AbstractAnimation(ABC):
 
     def __del__(self):
         """Destructor to show the cursor when the object is deleted."""
-        self.show_cursor()
+        ansi.show_cursor()
 
-    @staticmethod
-    def hide_cursor():
-        """Hide the cursor"""
-        print(ansi.HIDE_CURSOR, end="", file=sys.stderr, flush=True)
+    def show(self):
+        """Show the animation."""
+        self._visible = True
+        self.draw()
 
-    @staticmethod
-    def show_cursor():
-        """Show the cursor"""
-        print(ansi.SHOW_CURSOR, end="", file=sys.stderr, flush=True)
+    def hide(self):
+        """Hide the animation."""
+        self._visible = False
+        ansi.show_cursor()
 
-    def set_value_no_draw(self, value: int | float):
-        """Set the current value of the animation without drawing it.
-
-        Args:
-            value: The new current value of the animation.
-        """
-        self._value = value
