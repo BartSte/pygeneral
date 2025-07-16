@@ -7,7 +7,7 @@ name = "pygeneral"
 authors = [ {name = "BartSte"} ]
 description = "Tools for Python"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 keywords = ["tools", "python", "helpers", "utilities", "general"]
 license = {text = "MIT License"}
 classifiers = [
