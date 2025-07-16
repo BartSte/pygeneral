@@ -51,7 +51,6 @@ class AbstractAnimation(ABC):
         """Draw the animation."""
         message = self.make_message()
         print(message, end="", file=sys.stderr, flush=True)
-        ansi.hide_cursor()
 
     @abstractmethod
     def make_message(self) -> str:
