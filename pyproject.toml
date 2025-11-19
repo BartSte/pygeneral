@@ -4,15 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygeneral"
-authors = [ {name = "BartSte"} ]
+authors = [{ name = "BartSte" }]
 description = "Tools for Python"
 readme = "README.md"
 requires-python = ">=3.12"
 keywords = ["tools", "python", "helpers", "utilities", "general"]
-license = {text = "MIT License"}
-classifiers = [
-    "Programming Language :: Python :: 3",
-]
+license = { text = "MIT License" }
+classifiers = ["Programming Language :: Python :: 3"]
 dependencies = []
 version = "1.0.0"
 
@@ -28,16 +26,9 @@ include = ["pygeneral"]
 
 [tool.pyright]
 include = ["src/pygeneral", "tests"]
-exclude = [
-    "**/__pycache__",
-    ".git",
-    ".pytest_cache",
-    "extras",
-]
+exclude = ["**/__pycache__", ".git", ".pytest_cache", "extras"]
 ignore = []
 defineConstant = {}
-stubPath = "stubs"
-venvPath = ".venv"
 
 reportImplicitStringConcatenation = false
 reportMissingImports = true
@@ -45,34 +36,22 @@ reportMissingTypeStubs = false
 reportUnusedCallResult = false
 
 pythonVersion = "3.13"
-pythonPlatform = "Linux"
-
-executionEnvironments = []
 
 [tool.ruff]
 line-length = 80
 
 select = [
-    "F",  # pyflakes
-    "E",  # pycodestyle errors
-    "W",  # pycodestyle warnings
-    "I",  # isort
-    "N",  # PEP8 naming
+    "F", # pyflakes
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "I", # isort
+    "N", # PEP8 naming
 ]
-
-[tool.autopep8]
-max_line_length = 80
-aggressive = 3
-experimental = true
 
 [tool.pytest.ini_options]
 addopts = "-s -rA --log-level INFO"
-pythonpath = [
-  "src"
-]
-testpaths = [
-    "tests"
-]
+pythonpath = ["src"]
+testpaths = ["tests"]
 
 [tool.ipdb]
 context = 9
