@@ -17,6 +17,15 @@ user. A change is always categorized based on the following types:
 
 - The animations require `show` to be called to draw upon value change.
 
+### Features
+
+- Added `multiple.py` for handling multiple animations simultaneously.
+- Added streaming subprocess stdout/stderr to multiple sinks.
+
+### Bug
+
+- Decreased python version to 3.12 as 3.13 is not the default for ubuntu yet.
+
 ## 0.2
 
 ### Features
