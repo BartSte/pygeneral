@@ -14,8 +14,8 @@ classifiers = ["Programming Language :: Python :: 3"]
 dependencies = []
 version = "1.0.2"
 
-[project.optional-dependencies]
-dev = ["ipdb", "ipython", "pytest", "build", "twine", "pre-commit"]
+[dependency-groups]
+dev = ["ipdb", "ipython", "pytest", "pre-commit"]
 
 [project.scripts]
 lensort = "pygeneral._cli.lensort:main"

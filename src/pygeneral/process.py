@@ -19,12 +19,12 @@ def stream_subprocess(
         command: The command to execute.
         stdout: Optional sinks or sink collections that receive stdout data.
         stderr: Optional sinks or sink collections that receive stderr data.
-        **kwargs: Additional keyword arguments to pass to `subprocess.Popen`. The
-            following kwargs cannot be overridden:
-                - stdout: Set to `subprocess.PIPE`.
-                - stderr: Set to `subprocess.PIPE`.
-                - text: Set to `True`.
-                - bufsize: Set to `1` (line-buffered).
+        **kwargs: Additional keyword arguments to pass to `subprocess.Popen`.
+            The following kwargs cannot be overridden:
+            - stdout: Set to `subprocess.PIPE`.
+            - stderr: Set to `subprocess.PIPE`.
+            - text: Set to `True`.
+            - bufsize: Set to `1` (line-buffered).
 
     Returns:
         The return code of the subprocess.
