@@ -3,6 +3,7 @@ import sys
 from argparse import ArgumentParser, Namespace, RawDescriptionHelpFormatter
 from sys import stdin
 
+from pygeneral import log
 from pygeneral.sort import lensort
 
 _DESCRIPTION = """
@@ -33,6 +34,7 @@ def main():
     """Entrypoint"""
     try:
         _main()
+        log.setup("lensort")
     except Exception as error:
         logging.critical(error)
         sys.exit(1)
