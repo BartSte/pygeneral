@@ -17,6 +17,10 @@ user. A change is always categorized based on the following types:
 
 - Added log.py
 
+### Improvements
+
+- Improve log setup with defaults and tests
+
 ## 1.0
 
 ### Breaking
