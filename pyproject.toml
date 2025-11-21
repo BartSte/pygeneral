@@ -12,7 +12,7 @@ keywords = ["tools", "python", "helpers", "utilities", "general"]
 license = { text = "MIT License" }
 classifiers = ["Programming Language :: Python :: 3"]
 dependencies = []
-version = "1.0.2"
+version = "1.1.0"
 
 [dependency-groups]
 dev = ["ipdb", "ipython", "pytest", "pre-commit"]
