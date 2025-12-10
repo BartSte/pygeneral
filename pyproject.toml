@@ -8,7 +8,7 @@ license = { file = "LICENSE" }
 name = "pygeneral"
 readme = "README.md"
 requires-python = ">=3.12"
-version = "1.1.1"
+version = "1.1.2"
 
 [dependency-groups]
 dev = ["ipdb", "ipython", "pytest", "pre-commit"]
