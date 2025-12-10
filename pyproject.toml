@@ -1,17 +1,13 @@
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "pygeneral"
 authors = [{ name = "BartSte" }]
-description = "Tools for Python"
-readme = "README.md"
-requires-python = ">=3.12"
-keywords = ["tools", "python", "helpers", "utilities", "general"]
-license = { text = "MIT License" }
 classifiers = ["Programming Language :: Python :: 3"]
 dependencies = []
+description = "Tools for Python"
+keywords = ["tools", "python", "helpers", "utilities", "general"]
+license = { file = "LICENSE" }
+name = "pygeneral"
+readme = "README.md"
+requires-python = ">=3.12"
 version = "1.1.1"
 
 [dependency-groups]
@@ -20,9 +16,17 @@ dev = ["ipdb", "ipython", "pytest", "pre-commit"]
 [project.scripts]
 lensort = "pygeneral._cli.lensort:main"
 
+# Build system configuration
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["pygeneral"]
+
+# Linter, formatter, type checker, and test configurations from here on
 
 [tool.pyright]
 include = ["src/pygeneral", "tests"]
